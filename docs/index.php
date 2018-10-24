@@ -1,16 +1,3 @@
-<?php 
-  session_start(); 
-
-  if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-  }
-  if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: login.php");
-  }
-?>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +11,7 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <!-- CUSTOM STYLES -->
-  <link rel="stylesheet" type="text/css" href="css/homepagestyle.css">
+  <link rel="stylesheet" type="text/css" href="../css/homepagestyle.css">
 
 <!--     <link rel="stylesheet" type="text/css" href="styles.css">
  -->
@@ -37,7 +24,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- CUSTOM JS -->
   <!-- <script type="text/javascript" src="JS/config.js"></script> -->
-  <script type="text/javascript" src="js/scripts.js"></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
 
 </head>
 
@@ -105,10 +92,6 @@
         </li> -->
         </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="icon-bar"><a class="logout" href="index.php?logout='1'";">Logout</a></li>
-          </ul>
-
         <ul class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-right searchForm">
             <div class="form-group">
@@ -120,25 +103,6 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
-    <div class="content">
-    <!-- notification message -->
-    <?php if (isset($_SESSION['success'])) : ?>
-      <div class="error success" >
-        <h3>
-          <?php 
-            echo $_SESSION['success']; 
-            unset($_SESSION['success']);
-          ?>
-        </h3>
-      </div>
-    <?php endif ?>
-
-    <!-- logged in user information -->
-    <?php  if (isset($_SESSION['username'])) : ?>
-      <p style="color: white; font-size: 18px; margin-left: 25px">Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-    <?php endif ?>
-</div>
 
   <!-- Displaying the movies -->
 
